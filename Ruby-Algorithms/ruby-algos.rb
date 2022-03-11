@@ -17,3 +17,17 @@ def generateHashtag(str)
   final = result.each {|a| a.capitalize!}.join("")
   final == "#" || final.length > 140  ? false : final
 end
+
+
+# Extract the domain name from a URL
+# https://www.codewars.com/kata/514a024011ea4fb54200004b/train/ruby
+
+def domain_name(url)
+  if url.include?("www")
+    url.split("")[(url.split("").index(".") + 1)..(url.split("").each_index.select{|a| url.split("")[a] == "."}[1] - 1)].join()
+  else
+    url.split("")[(url.split("").index("/")+2)..(url.split("").index(".")-1)].join()
+  end
+end
+
+p domain_name("http://www.xakep.ru")
